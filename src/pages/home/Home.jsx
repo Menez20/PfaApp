@@ -1,17 +1,15 @@
 import React from 'react';
-import { Footer } from '../../components/Footer';
-import { Hero } from '../../components/Hero';
-import { Nav } from '../../components/Nav';
-import { Faq } from '../../components/Accordion';
+import { Footer } from '../../components/homecmp/Footer';
+import { Hero } from '../../components/homecmp/Hero';
+import { Nav } from '../../components/homecmp/Nav';
+import { AccordionSection } from '../../components/homecmp/Accordion';
 
 export const Home = () => {
   return (
     <div>
       <Nav />
-      {/* <Navbar /> */}
       <Hero />
-
-      <Faq />
+      <AccordionSection />
       <Footer />
     </div>
   );

@@ -1,7 +1,10 @@
 import React from 'react';
+import Navbar from '../../components/userpagecmp/Nav';
 
-function user() {
-  return <div>user</div>;
-}
-
-export default user;
+export const User = () => {
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
+};
