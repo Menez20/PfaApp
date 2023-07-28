@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import pic from '../../assets/registerpic2.jpg';
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -25,11 +25,7 @@ const Navbar = () => {
             <button
               onClick={toggleDropdown}
               className='flex items-center text-white focus:outline-none'>
-              <img
-                src='your-avatar.png'
-                alt='Avatar'
-                className='w-10 h-10 rounded-full'
-              />
+              <img src={pic} alt='Avatar' className='w-10 h-10 rounded-full' />
             </button>
             {isDropdownOpen && (
               <div className='absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg'>

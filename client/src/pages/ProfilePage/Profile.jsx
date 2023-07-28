@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../../components/userpagecmp/Nav';
+import Navbar from '../../components/profilepagecmp/Nav';
 
 export const User = () => {
   return (

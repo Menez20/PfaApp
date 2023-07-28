@@ -42,7 +42,7 @@ export const Nav = () => {
           </li>
 
           <li className='align-text-top right p-3 '>
-            <button className=' border-none p-1 px-4 shadow-md  rounded-3xl duration-170 bg-black text-white delay-100 hover:px-8 hover:rounded-sm transition-all '>
+            <button className=' border-none p-1 px-4 shadow-md  rounded-3xl duration-170 bg-black text-white delay-100 hover:px-8 hover:rounded-sm transition-all' onC>
               Sign Up
             </button>
           </li>

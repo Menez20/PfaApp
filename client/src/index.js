@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Home } from './pages/home/Home';
-import { User } from './pages/userPage/User';
+import { User } from './pages/ProfilePage/Profile';
 import Login from './pages/login&register/Login';
 import Register from './pages/login&register/Register';
 
