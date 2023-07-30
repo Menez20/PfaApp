@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { Home } from './pages/home/Home';
@@ -14,7 +14,7 @@ root.render(
   <Router>
     <Routes>
       <Route path='/' element={<Home />} />
-      <Route path='/user' element={<User />} />
+      <Route path='/profile/:userId' element={<User />} />
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/*' element={<div>404 - Not Found</div>} />

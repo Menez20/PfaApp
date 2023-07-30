@@ -1,9 +1,10 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const navigate = useNavigate();
 
   return (
@@ -47,14 +48,13 @@ export const Nav = () => {
             </a>
           </li>
 
-          <li className="align-text-top right p-3 ">
+          <li className='align-text-top right p-3 '>
             <button
-              className=" border-none p-1 px-4 shadow-md  rounded-3xl duration-170 bg-black text-white delay-100 hover:px-8 hover:rounded-sm transition-all"
+              className=' rounded-3xl p-1 px-6 pt-1 text-sm bg-black text-white font-medium uppercase leading-normal border-none shadow-md duration-150 hover:rounded-md hover:px-8 hover:mr-3 transition-all'
               onClick={() => {
-                navigate("/login");
-              }}
-            >
-              Sign Up
+                navigate('/login');
+              }}>
+              Sign up
             </button>
           </li>
         </ul>

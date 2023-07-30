@@ -2,18 +2,52 @@ import React, { useState } from 'react';
 import pic from '../../assets/loginpicture.jpg';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+  };
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
+
+  const handleSubmit = () => {
+    axios
+      .post('http://localhost:3001/login', {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+
+        toast.success('login success');
+        setTimeout(() => {
+          navigate('/user');
+        }, 3000);
+      })
+      .catch((error) => {
+        toast.error('invalid credentials');
+        setTimeout(() => {
+          console.log(error);
+          window.location.reload(true);
+        }, 3000);
+      });
+  };
+  // const consl = () => {
+  //   console.log({ email, password });
+  // };
 
   const navigate = useNavigate();
   return (
@@ -40,10 +74,11 @@ export default function Login() {
 
                     <form method='POST'>
                       <p className='mb-4'>Please login to your account</p>
-                      {/* <!--Username input--> */}
+                      {/* <!--Email input--> */}
                       <input
-                        type='text'
-                        placeholder='username'
+                        type='email'
+                        placeholder='Email'
+                        onChange={handleEmailChange}
                         className='border-none p-3 w-full mb-4 shadow-md  rounded-md  bg-[#f6f4eb] text-black '
                       />
 
@@ -67,7 +102,9 @@ export default function Login() {
 
                       {/* <!--Submit button--> */}
                       <div className='mb-12 pb-1 pt-1 text-center'>
-                        <button className=' border-none text-sm p-2 mb-4 px-10 w-full shadow-md  rounded-3xl duration-170 bg-black text-white delay-100 hover:px-8 hover:bg-slate-900 transition-all '>
+                        <button
+                          className=' border-none text-sm p-2 mb-4 px-10 w-full shadow-md  rounded-3xl duration-170 bg-black text-white delay-100 hover:px-8 hover:bg-slate-900 transition-all '
+                          onClick={() => handleSubmit()}>
                           Log in
                         </button>
 
@@ -117,6 +154,20 @@ export default function Login() {
             </div>
           </div>
         </div>
+
+        {/* <!--Toast--> */}
+        <ToastContainer
+          position='top-right'
+          autoClose={2500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+          theme='light'
+        />
       </div>
     </section>
   );
