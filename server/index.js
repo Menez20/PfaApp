@@ -30,13 +30,13 @@ const storage = multer.diskStorage({
     cb(null, "public/assets");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    cb(null, Date.now() + "-" + file.originalname);
   },
 });
 const upload = multer({ storage });
 
 // Routes with files
-app.post("/register", upload.single("picture"), register);
+app.post("/register", upload.single("profilePicture"), register);
 
 // Mongoose
 const PORT = process.env.PORT || 6001;

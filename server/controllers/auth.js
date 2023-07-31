@@ -5,18 +5,12 @@ import User from "../models/user.js";
 // register
 export const register = async (req, res) => {
   try {
-    const {
-      firstName,
-      lastName,
-      email,
-      password,
-      address,
-      phone,
-      profilePicture,
-    } = req.body;
+    const { firstName, lastName, email, password, address, phone } = req.body;
 
     const salt = await bycrypt.genSalt();
     const hashedPassword = await bycrypt.hash(password, salt);
+
+    const profilePicture = req.file.filename;
 
     const newUser = new User({
       firstName,
