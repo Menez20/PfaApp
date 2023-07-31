@@ -38,3 +38,27 @@ export const register = async (req, res) => {
     }
   }
 };
+
+// login
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // user checking
+    const user = await User.findOne({ email: email });
+    if (!user) return res.status(404).json({ message: "Invalid Credentials!" });
+
+    const isPasswordCorrect = await bycrypt.compare(password, user.password);
+    if (!isPasswordCorrect)
+      return res.status(400).json({ message: "Invalid Credentials!" });
+
+    // token creation
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
+    // response
+    delete user.password;
+    res.status(200).json({ user, token });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

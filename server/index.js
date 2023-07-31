@@ -9,6 +9,7 @@ import helmet from "helmet";
 import path from "path";
 import { fileURLToPath } from "url";
 import { register } from "./controllers/auth.js";
+import authRoutes from "./routes/auth.js";
 
 // Config
 const __filename = fileURLToPath(import.meta.url);
@@ -37,6 +38,9 @@ const upload = multer({ storage });
 
 // Routes with files
 app.post("/register", upload.single("profilePicture"), register);
+
+// Routes
+app.use("/", authRoutes);
 
 // Mongoose
 const PORT = process.env.PORT || 6001;
