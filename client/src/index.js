@@ -15,6 +15,7 @@ root.render(
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/profile/:userId' element={<User />} />
+
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/*' element={<div>404 - Not Found</div>} />
