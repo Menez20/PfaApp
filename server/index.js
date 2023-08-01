@@ -10,6 +10,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { register } from "./controllers/auth.js";
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/user.js";
 
 // Config
 const __filename = fileURLToPath(import.meta.url);
@@ -41,6 +42,7 @@ app.post("/register", upload.single("profilePicture"), register);
 
 // Routes
 app.use("/", authRoutes);
+app.use("/user", userRoutes);
 
 // Mongoose
 const PORT = process.env.PORT || 6001;
