@@ -3,6 +3,12 @@ import jwt from "jsonwebtoken";
 import User from "../models/user.js";
 
 // register
+/**
+ * Register a user
+ * @param {any} req
+ * @param {any} res
+ * @returns {any} created user
+ */
 export const register = async (req, res) => {
   try {
     const { firstName, lastName, email, password, address, phone } = req.body;
@@ -40,6 +46,12 @@ export const register = async (req, res) => {
 };
 
 // login
+/**
+ * Login a user
+ * @param {any} req
+ * @param {any} res
+ * @returns {any} user and token
+ */
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
