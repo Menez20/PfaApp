@@ -38,7 +38,7 @@ export const register = async (req, res) => {
       Object.keys(error.errors).forEach((key) => {
         validationErrors[key] = error.errors[key].message;
       });
-      res.status(400).json(validationErrors);
+      res.status(400).json({ error: validationErrors });
     } else {
       res.status(500).json({ error: error.message });
     }
@@ -58,11 +58,11 @@ export const login = async (req, res) => {
 
     // user checking
     const user = await User.findOne({ email: email });
-    if (!user) return res.status(404).json({ message: "Invalid Credentials!" });
+    if (!user) return res.status(404).json({ error: "Invalid Credentials!" });
 
     const isPasswordCorrect = await bycrypt.compare(password, user.password);
     if (!isPasswordCorrect)
-      return res.status(400).json({ message: "Invalid Credentials!" });
+      return res.status(400).json({ error: "Invalid Credentials!" });
 
     // token creation
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
