@@ -69,29 +69,31 @@ export default function Register() {
                       </h4>
                     </div>
 
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
                       <p className="mb-4">
                         Please register to create an account
                       </p>
 
-                      {/* First Name input */}
-                      <div className="relative">
-                        <input
-                          type="text"
-                          placeholder="First Name"
-                          className="border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black"
-                        />
-                        <FaUser className="absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none" />
-                      </div>
+                      <div className="flex items-center justify-between gap-2">
+                        {/* First Name input */}
+                        <div className="relative w-full">
+                          <input
+                            type="text"
+                            placeholder="First Name"
+                            className="border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black"
+                          />
+                          <FaUser className="absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none" />
+                        </div>
 
-                      {/* Last Name input */}
-                      <div className="relative">
-                        <input
-                          type="text"
-                          placeholder="Last Name"
-                          className="border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black"
-                        />
-                        <FaUser className="absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none" />
+                        {/* Last Name input */}
+                        <div className="relative w-full">
+                          <input
+                            type="text"
+                            placeholder="Last Name"
+                            className="border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black"
+                          />
+                          <FaUser className="absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none" />
+                        </div>
                       </div>
 
                       {/* Email input */}
