@@ -8,7 +8,7 @@ const CommentSchema = new mongoose.Schema(
     },
     content: {
       type: String,
-      required: true,
+      required: "Comment content is required",
     },
   },
   { timestamps: true }

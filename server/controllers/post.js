@@ -1,4 +1,5 @@
 import Post from "../models/Post.js";
+import Comment from "../models/comment.js";
 
 // create
 /**
@@ -78,7 +79,28 @@ export const getPostsByUser = async (req, res) => {
   try {
     const posts = await Post.find({ userId: req.params.userId });
     res.status(200).json(posts);
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+/**
+ * Get all comments of a post
+ * @param {any} req
+ * @param {any} res
+ * @returns {any} array of comments
+ */
+export const getPostComments = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (!post) throw new Error("Post not found!");
+    const comments = post.comments;
+    res.status(200).json(comments);
+  } catch (error) {
+    if (error.message === "Post not found!")
+      res.status(404).json({ error: error.message });
+    else res.status(500).json({ error: error.message });
+  }
 };
 
 // update
@@ -108,6 +130,26 @@ export const likePost = async (req, res) => {
   }
 };
 
+/**
+ * Comment on a post
+ * @param {any} req
+ * @param {any} res
+ * @returns {any} post
+ */
+export const CommentPost = async (req, res) => {
+  try {
+    const { content } = req.body;
+    const post = await Post.findById(req.params.id);
+    const userId = req.user;
+    const comment = await Comment.create({ userId, content });
+    post.comments.push(comment);
+    await post.save();
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 // delete
 /**
  * Delete a post
@@ -128,5 +170,39 @@ export const deletePost = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+};
+
+/**
+ * Delete a comment
+ * @param {any} req
+ * @param {any} res
+ * @returns {any} post
+ */
+export const deleteComment = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    const comment = post.comments.id(req.params.commentId);
+
+    if (!comment) throw new Error("Comment not found!");
+    if (!post) throw new Error("Post not found!");
+
+    if (
+      comment.userId.toString() === req.user ||
+      post.userId.toString() === req.user
+    ) {
+      await Comment.findByIdAndDelete(req.params.commentId);
+      post.comments.pull(req.params.commentId);
+      await post.save();
+      res.status(200).json(post);
+    } else {
+      res.status(401).json({ error: "You can only delete your own comments" });
+    }
+  } catch (error) {
+    if (error.message === "Comment not found!")
+      res.status(404).json({ error: error.message });
+    else if (error.message === "Post not found!")
+      res.status(404).json({ error: error.message });
+    else res.status(500).json({ error: error.message });
   }
 };
