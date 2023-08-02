@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import pic from '../../assets/registerpic2.jpg';
 
-const Navbar = () => {
+export const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -14,9 +14,8 @@ const Navbar = () => {
         <div className='flex items-center justify-between h-16'>
           {/* Logo and Name */}
           <div className='flex items-center'>
-            <img src='your-logo.png' alt='Logo' className='w-8 h-8 mr-2' />
-            <span className='text-white text-lg font-semibold'>
-              Your Logo Name
+            <span className='w-full textt-3xl font-bold text-[#00df9a]'>
+              Lander
             </span>
           </div>
 
@@ -49,4 +48,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+

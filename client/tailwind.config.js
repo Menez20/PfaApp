@@ -33,5 +33,6 @@ module.exports = {
       xxl: '1440px',
     },
   },
-  plugins: [require('flowbite/plugin')],
+  plugins: [require("daisyui")],
+  
 };

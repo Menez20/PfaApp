@@ -78,6 +78,7 @@ export default function Register() {
                         <input
                           type='text'
                           placeholder='First Name'
+                          name='firstName'
                           className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black'
                         />
                         <FaUser className='absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none' />
@@ -88,6 +89,7 @@ export default function Register() {
                         <input
                           type='text'
                           placeholder='Last Name'
+                          name='lastName'
                           className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black'
                         />
                         <FaUser className='absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none' />
@@ -98,6 +100,7 @@ export default function Register() {
                         <input
                           type='email'
                           placeholder='Email'
+                          name='email'
                           className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black'
                         />
                         <FaEnvelope className='absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none' />
@@ -109,6 +112,7 @@ export default function Register() {
                         <input
                           type='tel'
                           placeholder='Phone Number'
+                          name='phone'
                           className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black'
                         />
                         <FaPhone className='absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none' />
@@ -119,6 +123,7 @@ export default function Register() {
                         <input
                           type='text'
                           placeholder='Address'
+                          name='address'
                           className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black'
                         />
                         <FaLocationArrow className='absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none' />
@@ -130,18 +135,21 @@ export default function Register() {
                           type={showPassword ? 'text' : 'password'}
                           placeholder='Password'
                           value={password}
+                          name='password'
                           onChange={handlePasswordChange}
                           className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black'
                         />
                         <button
                           type='button'
                           onClick={handleTogglePassword}
+                
                           className='absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none'>
                           {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                       </div>
+                      
 
-                      {/* Confirm Password input */}
+                     
 
                       {/* Submit button */}
                       <div className='mb-12 pb-1 pt-1 text-center'>
