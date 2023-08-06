@@ -1,130 +1,159 @@
-import React, { useState } from "react";
-import pic from "../../assets/loginpicture.jpg";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useState, useEffect } from 'react';
+import pic from '../../assets/loginpicture.jpg';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
-  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+        toast.warn('You are already logged in');
+        navigate(`/profile/:${user._id}`);
+      } else {
+        navigate('/login'); // Navigate to the login page if user is not found
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = () => {
-    axios
-      .post("http://localhost:3001/login", {
-        email: email,
-        password: password,
-      })
-      .then((response) => {
-        console.log(response);
-        console.log(response.data);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(user);
+    if (!user.email || !user.password) {
+      toast.error('Please fill all the fields');
+      return;
+    }
 
-        toast.success("login success");
-        setTimeout(() => {
-          navigate("/profile/1");
-        }, 3000);
-      })
-      .catch((error) => {
-        toast.error("invalid credentials");
-        setTimeout(() => {
-          console.log(error);
-          window.location.reload(true);
-        }, 3000);
-      });
+    try {
+      const response = await axios.post(
+        'http://localhost:3001/login',
+        {
+          email: user.email,
+          password: user.password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      const { data } = response;
+
+      console.log(data);
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+
+      toast.success('Login successful');
+
+      setTimeout(() => {
+        navigate(`/profile/:${data.user._id}`);
+      }, 3000);
+    } catch (error) {
+      console.error(error);
+
+      toast.error('Invalid credentials');
+
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 3000);
+    }
   };
+
   // const consl = () => {
   //   console.log({ email, password });
   // };
 
   const navigate = useNavigate();
   return (
-    <section className="h-full bg-[#f6f4eb] dark:bg-neutral-700">
-      <div className="container h-full p-10">
-        <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
-          <div className="w-full">
-            <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
-              <div className="g-0 lg:flex lg:flex-wrap">
+    <section className='h-full bg-[#f6f4eb] '>
+      <div className='container h-full p-10'>
+        <div className='g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 '>
+          <div className='w-full'>
+            <div className='block rounded-lg bg-white shadow-lg '>
+              <div className='g-0 lg:flex lg:flex-wrap'>
                 {/* <!-- Left column container--> */}
-                <div className="px-4 md:px-0 lg:w-6/12">
-                  <div className="md:mx-6 md:p-12">
+                <div className='px-4 md:px-0 lg:w-6/12'>
+                  <div className='md:mx-6 md:p-12'>
                     {/* <!--Logo--> */}
-                    <div className="text-center">
+                    <div className='text-center'>
                       <img
-                        className="mx-auto w-48"
-                        src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                        alt="logo"
+                        className='mx-auto w-48'
+                        src='https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp'
+                        alt='logo'
                       />
-                      <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">
+                      <h4 className='mb-12 mt-1 pb-1 text-xl font-semibold'>
                         Welcome Back
                       </h4>
                     </div>
 
-                    <form method="POST">
-                      <p className="mb-4">Please login to your account</p>
+                    <form method='POST'>
+                      <p className='mb-4'>Please login to your account</p>
                       {/* <!--Email input--> */}
                       <input
-                        type="email"
-                        placeholder="Email"
-                        onChange={handleEmailChange}
-                        className="border-none p-3 w-full mb-4 shadow-md  rounded-md  bg-[#f6f4eb] text-black "
+                        type='email'
+                        placeholder='Email'
+                        onChange={(e) =>
+                          setUser({ ...user, email: e.target.value })
+                        }
+                        className='border-none p-3 w-full mb-4 shadow-md  rounded-md  bg-[#f6f4eb] text-black '
                       />
 
                       {/* <!--Password input--> */}
-                      <div className="relative ">
-                        {" "}
+                      <div className='relative '>
+                        {' '}
                         <input
-                          type={showPassword ? "text" : "password"}
-                          placeholder="password"
-                          value={password}
-                          onChange={handlePasswordChange}
-                          className="border-none p-3 w-full mb-4 shadow-md  rounded-md  bg-[#f6f4eb] text-black"
+                          type={showPassword ? 'text' : 'password'}
+                          placeholder='password'
+                          onChange={(e) =>
+                            setUser({ ...user, password: e.target.value })
+                          }
+                          className='border-none p-3 w-full mb-4 shadow-md  rounded-md  bg-[#f6f4eb] text-black'
                         />
                         <button
-                          type="button"
+                          type='button'
                           onClick={handleTogglePassword}
-                          className="absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none"
-                        >
+                          className='absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none'>
                           {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                       </div>
 
                       {/* <!--Submit button--> */}
-                      <div className="mb-12 pb-1 pt-1 text-center">
+                      <div className='mb-12 pb-1 pt-1 text-center'>
                         <button
-                          className=" border-none text-sm p-2 mb-4 px-10 w-full shadow-md  rounded-3xl duration-170 bg-black text-white delay-100 hover:px-8 hover:bg-slate-900 transition-all "
-                          onClick={() => handleSubmit()}
-                        >
+                          className=' border-none text-sm p-2 mb-4 px-10 w-full shadow-md  rounded-3xl duration-170 bg-black text-white delay-100 hover:px-8 hover:bg-slate-900 transition-all '
+                          onClick={handleSubmit}>
                           Log in
                         </button>
 
                         {/* <!--Forgot password link--> */}
-                        <a href="#!">Forgot password?</a>
+                        <a href='#!'>Forgot password?</a>
                       </div>
 
                       {/* <!--Register button--> */}
-                      <div className="flex items-center justify-between pb-6">
-                        <p className="mb-0 mr-2">Don't have an account?</p>
+                      <div className='flex items-center justify-between pb-6'>
+                        <p className='mb-0 mr-2'>Don't have an account?</p>
 
                         <button
-                          type="button"
-                          className="inline-block rounded-3xl  px-6 pb-[6px] pt-2 text-xs bg-black text-white font-medium uppercase leading-normal border-none shadow-md hover:bg-slate-900 hover:px-8 hover:mr-3 transition-all"
+                          type='button'
+                          className='inline-block rounded-3xl  px-6 pb-[6px] pt-2 text-xs bg-black text-white font-medium uppercase leading-normal border-none shadow-md hover:bg-slate-900 hover:px-8 hover:mr-3 transition-all'
                           onClick={() => {
-                            navigate("/register");
-                          }}
-                        >
+                            navigate('/register');
+                          }}>
                           Register
                         </button>
                       </div>
@@ -134,19 +163,18 @@ export default function Login() {
 
                 {/* <!-- Right column container with background and description--> */}
                 <div
-                  className="relative flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
+                  className='relative flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none'
                   style={{
                     background: `url(${pic}) no-repeat center center / cover`,
-                  }}
-                >
+                  }}>
                   {/* Blue overlay div */}
-                  <div className="absolute top-0 right-0 bottom-0 left-0 bg-[#243144] opacity-70"></div>
+                  <div className='absolute top-0 right-0 bottom-0 left-0 bg-[#243144] opacity-70'></div>
 
-                  <div className="px-4 py-6 text-white md:mx-6 md:p-12 relative z-10">
-                    <h4 className="mb-6 text-xl font-semibold">
+                  <div className='px-4 py-6 text-white md:mx-6 md:p-12 relative z-10'>
+                    <h4 className='mb-6 text-xl font-semibold'>
                       We are more than just a company
                     </h4>
-                    <p className="text-sm">
+                    <p className='text-sm'>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -161,7 +189,7 @@ export default function Login() {
 
         {/* <!--Toast--> */}
         <ToastContainer
-          position="top-right"
+          position='top-right'
           autoClose={2500}
           hideProgressBar={false}
           newestOnTop={false}
@@ -170,7 +198,7 @@ export default function Login() {
           pauseOnFocusLoss
           draggable
           pauseOnHover={false}
-          theme="light"
+          theme='light'
         />
       </div>
     </section>
