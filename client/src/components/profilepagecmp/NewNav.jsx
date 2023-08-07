@@ -23,19 +23,19 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FlexBetween from '../FlexBetween';
-import { red } from '@mui/material/colors';
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem('user'));
-  const fullName = user ? `${user.firstName} ${user.lastName}` : '';
-  console.log(fullName);
+  const Name = user ? `${user.firstName} ` : '';
+  console.log(Name);
   console.log(user.profilePicture);
-  const imagePath = user
-    ? `../../../../server/public/${user.profilePicture}`
-    : '';
+
+  const imagePath = `../assets/${user.profilePicture}`;
+
+  console.log(imagePath);
 
   const handleLogout = () => {
     localStorage.clear();
@@ -93,13 +93,13 @@ const Navbar = () => {
           </div>
         </div>
         <div className='typoghrapgy'>
-          <p>Hi, {fullName}</p>
+          <p>Hi, {Name}</p>
         </div>
 
         <div className='dropdown dropdown-end '>
           <label tabIndex={3} className='btn btn-ghost btn-circle avatar mr-8'>
             <div className='w-10 rounded-full border-solid'>
-              <img src='' alt='' />
+              <img src={imagePath} alt='PIC' />
             </div>
           </label>
           <ul
