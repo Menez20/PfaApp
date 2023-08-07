@@ -33,7 +33,7 @@ const Navbar = () => {
   console.log(Name);
   console.log(user.profilePicture);
 
-  const imagePath = `../assets/${user.profilePicture}`;
+  const imagePath = `http://localhost:3001/assets/${user.profilePicture}`;
 
   console.log(imagePath);
 
