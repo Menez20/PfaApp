@@ -8,23 +8,10 @@ import { User } from './pages/ProfilePage/Profile';
 import Login from './pages/login&register/Login';
 import Register from './pages/login&register/Register';
 import { configureStore } from '@reduxjs/toolkit';
-import {
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+
 // import authReducer from './state/features/authSlice';
 const store = configureStore({
   reducer: {},
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

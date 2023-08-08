@@ -33,6 +33,5 @@ module.exports = {
       xxl: '1440px',
     },
   },
-  plugins: [require("daisyui")],
-  
+  plugins: [require('daisyui')],
 };

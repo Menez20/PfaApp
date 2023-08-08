@@ -79,13 +79,13 @@ const Navbar = () => {
           <div
             tabIndex={2}
             className='mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow'>
-            <div className='card-body bg-[#f6f4eb] rounded-xl'>
-              <span className='font-bold text-lg text-black'>
+            <div className='card-body bg-[#ffffff] rounded-xl'>
+              <span className='font-bold text-sm text-black'>
                 {'+2 Notification'}
               </span>
               <span className='text-info'>New Message</span>
               <div className='card-actions'>
-                <button className='btn btn-primary btn-block bg-black text-white'>
+                <button className='btn btn-primary btn-block bg-black text-sm text-white'>
                   Open Inbox
                 </button>
               </div>
@@ -93,7 +93,9 @@ const Navbar = () => {
           </div>
         </div>
         <div className='typoghrapgy'>
-          <p>Hi, {Name}</p>
+          <p className='px-4'>
+            Hi, <span className='capitalize'>{Name}</span>
+          </p>
         </div>
 
         <div className='dropdown dropdown-end '>
@@ -104,7 +106,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  w-52 bg-[#f6f4eb] rounded-xl text-black'>
+            className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  w-52 bg-[#ffffff] rounded-xl text-black'>
             <li className=''>
               <a href='/' className='justify-between'>
                 Profile

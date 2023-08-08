@@ -54,7 +54,6 @@ export default function Login() {
 
       const { data } = response;
 
-      console.log(data);
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
 
@@ -62,7 +61,7 @@ export default function Login() {
 
       setTimeout(() => {
         navigate(`/profile/:${data.user._id}`);
-      }, 3000);
+      }, 1800);
     } catch (error) {
       console.error(error);
 

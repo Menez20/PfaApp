@@ -68,7 +68,7 @@ export default function Register() {
       formData.append('lastName', user.lastName);
       formData.append('email', user.email);
       formData.append('password', user.password);
-      formData.append('adresse', user.address);
+      formData.append('address', user.address);
       formData.append('phone', user.phone);
       formData.append('profilePicture', user.profilePicture);
 
