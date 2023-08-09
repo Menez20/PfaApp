@@ -49,13 +49,15 @@ const UserWidgetSide = ({ userId, picturePath }) => {
           <UserImage image={picturePath} />
           <Box>
             <Typography
-              variant='h6'
               color='black'
               fontWeight='500'
-              className=' capitalize hover:text-[#48ffbf] hover:cursor-pointer'>
+              className=' capitalize  hover:text-[#48ffbf] hover:cursor-pointer'
+              sx={{ fontSize: 16 }}>
               {firstName} {lastName}
             </Typography>
-            <Typography color='black'>{phone} </Typography>
+            <Typography color='black' sx={{ fontSize: 14 }}>
+              {phone}{' '}
+            </Typography>
           </Box>
         </FlexBetween>
         <ManageAccountsOutlined />

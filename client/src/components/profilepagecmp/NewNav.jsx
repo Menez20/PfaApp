@@ -43,7 +43,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className='navbar bg-[#f6f4eb]'>
+    <div className='navbar bg-[#f6f4eb] shadow-md shadow-[#00df9a]'>
       <div className='flex-1'>
         <span className='w-full text-xl font-bold text-[#00df9a] ml-8'>
           Lander
