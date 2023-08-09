@@ -32,7 +32,7 @@ export const register = async (req, res) => {
     res.status(201).json(user);
   } catch (error) {
     if (error.code === 11000) {
-      res.status(400).json({ email: "Email already exists!" });
+      res.status(400).json({ error: { email: "Email already exists!" } });
     } else if (error.name === "ValidationError") {
       const validationErrors = {};
       Object.keys(error.errors).forEach((key) => {
