@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { Box, useMediaQuery } from '@mui/material';
 import { useEffect, useState } from 'react';
 import ConsultantList from '../../components/ConsultantList';
+import MyPostWidget from '../../components/MyPostWidget';
 
 const isAuthenticated = () => {
   // Check if the user is authenticated (you might need to implement your own logic)
@@ -58,7 +59,7 @@ export const User = () => {
         <Box
           flexBasis={isNonMobileScreens ? '42%' : undefined}
           mt={isNonMobileScreens ? undefined : '2rem'}>
-          <UserWidget picturePath={LocalUser.profilePicture} />
+          <MyPostWidget picturePath={LocalUser.profilePicture} />
           <Box m='2rem 0' />
           <UserWidget userId={LocalUser._id} isProfile />
         </Box>

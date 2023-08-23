@@ -1,5 +1,5 @@
-import Post from "../models/Post.js";
-import Comment from "../models/comment.js";
+import Post from '../models/Post.js';
+import Comment from '../models/comment.js';
 
 // create
 /**
@@ -10,14 +10,13 @@ import Comment from "../models/comment.js";
  */
 export const createPost = async (req, res) => {
   try {
-    const { topic, title, content } = req.body;
+    const { topic, content } = req.body;
     const userId = req.user;
     const image = req.file.filename;
 
     const newPost = new Post({
       userId,
       topic,
-      title,
       content,
       image,
     });
@@ -26,7 +25,7 @@ export const createPost = async (req, res) => {
     const posts = await Post.find();
     res.status(201).json(posts);
   } catch (error) {
-    if (error.name === "ValidationError") {
+    if (error.name === 'ValidationError') {
       const validationErrors = {};
       Object.keys(error.errors).forEach((key) => {
         validationErrors[key] = error.errors[key].message;
@@ -93,11 +92,11 @@ export const getPostsByUser = async (req, res) => {
 export const getPostComments = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    if (!post) throw new Error("Post not found!");
+    if (!post) throw new Error('Post not found!');
     const comments = post.comments;
     res.status(200).json(comments);
   } catch (error) {
-    if (error.message === "Post not found!")
+    if (error.message === 'Post not found!')
       res.status(404).json({ error: error.message });
     else res.status(500).json({ error: error.message });
   }
@@ -166,7 +165,7 @@ export const deletePost = async (req, res) => {
       const posts = await Post.find();
       res.status(200).json(posts);
     } else {
-      res.status(401).json({ error: "You can only delete your own posts" });
+      res.status(401).json({ error: 'You can only delete your own posts' });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -184,8 +183,8 @@ export const deleteComment = async (req, res) => {
     const post = await Post.findById(req.params.id);
     const comment = post.comments.id(req.params.commentId);
 
-    if (!comment) throw new Error("Comment not found!");
-    if (!post) throw new Error("Post not found!");
+    if (!comment) throw new Error('Comment not found!');
+    if (!post) throw new Error('Post not found!');
 
     if (
       comment.userId.toString() === req.user ||
@@ -196,12 +195,12 @@ export const deleteComment = async (req, res) => {
       await post.save();
       res.status(200).json(post);
     } else {
-      res.status(401).json({ error: "You can only delete your own comments" });
+      res.status(401).json({ error: 'You can only delete your own comments' });
     }
   } catch (error) {
-    if (error.message === "Comment not found!")
+    if (error.message === 'Comment not found!')
       res.status(404).json({ error: error.message });
-    else if (error.message === "Post not found!")
+    else if (error.message === 'Post not found!')
       res.status(404).json({ error: error.message });
     else res.status(500).json({ error: error.message });
   }
