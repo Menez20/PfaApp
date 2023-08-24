@@ -82,8 +82,13 @@ export default function Profile() {
                       <img
                         alt='...'
                         src={`http://localhost:3001/assets/${user.profilePicture}`}
-                        className='shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 '
-                        style={{ maxWidth: '150px' }}
+                        className='shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16  object-cover'
+                        style={{
+                          maxWidth: '150px',
+                          minWidth: '150px',
+                          maxHeight: '150px',
+                          minHeight: '150px',
+                        }}
                       />
                       {/* <UserImage image={Localuser.profilePicture}  /> */}
                     </div>
