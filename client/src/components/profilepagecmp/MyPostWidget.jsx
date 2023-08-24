@@ -19,10 +19,10 @@ import {
   Select,
   MenuItem,
 } from '@mui/material';
-import FlexBetween from '../components/FlexBetween';
+import FlexBetween from '../widget/FlexBetween';
 import Dropzone from 'react-dropzone';
-import UserImage from '../components/UserImage';
-import WidgetWrapper from '../components/WidgetWrapper';
+import UserImage from '../widget/UserImage';
+import WidgetWrapper from '../widget/WidgetWrapper';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -115,17 +115,23 @@ const MyPostWidget = ({ picturePath }) => {
             onChange={(e) => setPostValue(e.target.value)}
             sx={{
               width: '100%',
-              backgroundColor: '#fff',
+              backgroundColor: '#F2F2F2',
               borderRadius: '2rem',
+              border: 'none',
               height: '35px',
               textAlign: 'center',
+              color: 'grey',
+              fontSize: '0.9rem',
             }}
             displayEmpty>
-            <MenuItem value='' disabled sx={{ color: 'grey' }}>
-              Chose Post Topic
+            <MenuItem value='' disabled sx={{ border: 'none' }}>
+              Chose post topic here ...
             </MenuItem>
             {options.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
+              <MenuItem
+                key={option.value}
+                value={option.value}
+                sx={{ border: 'none' }}>
                 {option.label}
               </MenuItem>
             ))}
@@ -138,7 +144,7 @@ const MyPostWidget = ({ picturePath }) => {
           onChange={(e) => setPost(e.target.value)}
           value={post}
           sx={{
-            width: '88',
+            width: '88%',
             backgroundColor: '#fff',
             borderRadius: '2rem',
             padding: '1rem 2rem',
@@ -338,10 +344,10 @@ const MyPostWidget = ({ picturePath }) => {
         )}
 
         <button
-          disabled={!post || !postValue}
-          className={`bg-black text-sm text-white px-3 p-1 rounded-full ${
-            !post || !postValue ? '' : 'hover:bg-gray-800'
-          }`}
+          // disabled={!post || !postValue}
+          className={
+            'bg-black text-sm text-white px-4 p-1 rounded-full hover:bg-gray-500 hover:cursor-pointer focus:outline-none'
+          }
           onClick={handlePost}>
           POST
         </button>

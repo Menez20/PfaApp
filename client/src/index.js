@@ -8,6 +8,7 @@ import { User } from './pages/ProfilePage/Profile';
 import Login from './pages/login&register/Login';
 import Register from './pages/login&register/Register';
 import { configureStore } from '@reduxjs/toolkit';
+import UserPage from './pages/UserPage/UserPage';
 
 // import authReducer from './state/features/authSlice';
 const store = configureStore({
@@ -22,6 +23,7 @@ root.render(
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/profile/:userId' element={<User />} />
+        <Route path='/user/:userId' element={<UserPage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/*' element={<div>404 - Not Found</div>} />

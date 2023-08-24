@@ -22,7 +22,7 @@ import {
 } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import FlexBetween from '../FlexBetween';
+import FlexBetween from '../widget/FlexBetween';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className='navbar bg-[#f6f4eb] shadow-md shadow-[#00df9a]'>
+    <div className='navbar bg-[#f6f4eb] shadow-[#00df9a] drop-shadow-lg  '>
       <div className='flex-1'>
         <span className='w-full text-xl font-bold text-[#00df9a] ml-8'>
           Lander

@@ -2,49 +2,51 @@ import {
   ManageAccountsOutlined,
   EditOutlined,
   LocationOnOutlined,
-  WorkOutlineOutlined,
   AlternateEmailOutlined,
 } from '@mui/icons-material';
 import { Box, Typography, Divider, useTheme } from '@mui/material';
-import UserImage from '../UserImage';
-import FlexBetween from '../FlexBetween';
-import WidgetWrapper from '../WidgetWrapper';
+import UserImage from '../widget/UserImage';
+import FlexBetween from '../widget/FlexBetween';
+import WidgetWrapper from '../widget/WidgetWrapper';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import linkedin from '../../assets/linkedin.png';
 import twitter from '../../assets/twitter.png';
 
 const UserWidgetSide = ({ userId, picturePath }) => {
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user'));
 
-  const getUser = async () => {
-    const response = await fetch(`http://localhost:3001/users/${userId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await response.json();
-    setUser(data);
-  };
-  useEffect(() => {
-    getUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // const getUser = async () => {
+  //   const response = await fetch(`http://localhost:3001/users/${userId}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   });
+  //   const data = await response.json();
+  //   setUser(data);
+  // };
+  // useEffect(() => {
+  //   getUser();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   if (!user) {
     return null;
   }
-  const { firstName, lastName, profilePicture, address, email, phone } = user;
+  const { _id, firstName, lastName, profilePicture, address, email, phone } =
+    user;
   return (
     <WidgetWrapper>
       <FlexBetween
         gap='0.5rem'
         pb='1.1rem'
-        onClick={() => navigate(`/profile/${userId}`)}>
+        // onClick={() => navigate(`/profile/${userId}`)}
+      >
         <FlexBetween gap='1rem'>
           <UserImage image={picturePath} />
           <Box>
@@ -60,7 +62,13 @@ const UserWidgetSide = ({ userId, picturePath }) => {
             </Typography>
           </Box>
         </FlexBetween>
-        <ManageAccountsOutlined />
+        <ManageAccountsOutlined
+          sx={{ cursor: 'pointer' }}
+          // href={`/user/:${userId}`}
+          onClick={() => {
+            navigate(`/user/${userId}`);
+          }}
+        />
       </FlexBetween>
       <Divider />
       {/* SECOND ROW */}

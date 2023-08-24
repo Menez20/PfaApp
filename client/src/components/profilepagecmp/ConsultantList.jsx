@@ -1,7 +1,7 @@
 import { Box, Divider, Typography, useTheme } from '@mui/material';
-import WidgetWrapper from './WidgetWrapper';
+import WidgetWrapper from '../widget/WidgetWrapper';
 import { useState, useEffect } from 'react';
-import Consultant from './profilepagecmp/Consultant';
+import Consultant from './Consultant';
 import Pagination from '@mui/material/Pagination'; // Make sure to import the Pagination component from your Material-UI library
 
 const ConsultantList = () => {
@@ -55,6 +55,7 @@ const ConsultantList = () => {
           <Box>
             {' '}
             <Consultant
+              user={consultant}
               key={consultant._id}
               consultantId={consultant._id}
               name={`${consultant.firstName} ${consultant.lastName}`}
