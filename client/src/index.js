@@ -9,8 +9,6 @@ import Login from './pages/login&register/Login';
 import Register from './pages/login&register/Register';
 import { configureStore } from '@reduxjs/toolkit';
 import UserPage from './pages/UserPage/UserPage';
-import LoadingPage from './components/widget/LoadingPage';
-import { Nav } from './components/homecmp/Nav';
 import NotFound from './components/widget/NotFoundPage';
 // index.js or App.js
 import './components/widget/ClearLocalStorageOnClose.jsx';
