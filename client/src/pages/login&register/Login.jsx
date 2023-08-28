@@ -14,8 +14,8 @@ export default function Login() {
   });
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      const user = JSON.parse(localStorage.getItem('user'));
+    if (sessionStorage.getItem('token')) {
+      const user = JSON.parse(sessionStorage.getItem('user'));
       if (user) {
         toast.warn('You are already logged in');
         navigate(`/profile/:${user._id}`);
@@ -54,8 +54,8 @@ export default function Login() {
 
       const { data } = response;
 
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
+      sessionStorage.setItem('token', data.token);
+      sessionStorage.setItem('user', JSON.stringify(data.user));
 
       toast.success('Login successful');
 
@@ -74,7 +74,7 @@ export default function Login() {
   };
   const navigate = useNavigate();
   return (
-    <section className='h-full bg-[#f6f4eb] '>
+    <section className='h-full bg-gradient-to-b from-zinc-100 to-teal-50 '>
       <div className='container h-full p-10'>
         <div className='g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 '>
           <div className='w-full'>
@@ -104,7 +104,7 @@ export default function Login() {
                         onChange={(e) =>
                           setUser({ ...user, email: e.target.value })
                         }
-                        className='border-none p-3 w-full mb-4 shadow-md  rounded-md  bg-[#f6f4eb] text-black '
+                        className='border-none p-3 w-full mb-4 shadow-md  rounded-md  bg-gradient-to-b from-zinc-100 to-teal-50 text-black '
                       />
 
                       {/* <!--Password input--> */}
@@ -116,7 +116,7 @@ export default function Login() {
                           onChange={(e) =>
                             setUser({ ...user, password: e.target.value })
                           }
-                          className='border-none p-3 w-full mb-4 shadow-md  rounded-md  bg-[#f6f4eb] text-black'
+                          className='border-none p-3 w-full mb-4 shadow-md  rounded-md  bg-gradient-to-b from-zinc-100 to-teal-50 text-black'
                         />
                         <button
                           type='button'

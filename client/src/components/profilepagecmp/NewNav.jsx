@@ -28,7 +28,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(sessionStorage.getItem('user'));
   const Name = user ? `${user.firstName} ` : '';
   console.log(Name);
   console.log(user.profilePicture);
@@ -38,15 +38,15 @@ const Navbar = () => {
   console.log(imagePath);
 
   const handleLogout = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     navigate('/login');
   };
 
   return (
-    <div className='navbar bg-[#f6f4eb] shadow-[#00df9a] drop-shadow-lg  '>
+    <div className='navbar bg-zinc-100 shadow-[#00df9a] drop-shadow-lg  '>
       <div className='flex-1'>
         <span className='w-full text-xl font-bold text-[#00df9a] ml-8'>
-          Lander
+          LAWISOR
         </span>
       </div>
       <div className='flex-2'>

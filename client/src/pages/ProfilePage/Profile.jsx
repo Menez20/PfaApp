@@ -10,13 +10,13 @@
 
 // const isAuthenticated = () => {
 //   // Check if the user is authenticated (you might need to implement your own logic)
-//   return !!localStorage.getItem('token');
+//   return !!sessionStorage.getItem('token');
 // };
 // export const User = () => {
 //   const [user, setUser] = useState(null);
 
-//   const token = localStorage.getItem('token');
-//   const LocalUser = JSON.parse(localStorage.getItem('user'));
+//   const token = sessionStorage.getItem('token');
+//   const LocalUser = JSON.parse(sessionStorage.getItem('user'));
 //   const isNonMobileScreens = useMediaQuery('(min-width:1000px)');
 
 //   const getUser = async () => {
@@ -75,21 +75,22 @@ import React from 'react';
 import Navbar from '../../components/profilepagecmp/NewNav';
 import UserWidgetSide from '../../components/profilepagecmp/UserWidgetSide';
 import ConsultantList from '../../components/profilepagecmp/ConsultantList';
-import MyPostWidget from '../../components/profilepagecmp/MyPostWidget';
+import MyPostWidget from '../../components/profilepagecmp/post/MyPostWidget';
 import { Navigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Box, useMediaQuery } from '@mui/material';
 import { useEffect, useState } from 'react';
+import PostsWidget from '../../components/profilepagecmp/post/PostsWidget';
 
 const isAuthenticated = () => {
   // Check if the user is authenticated (you might need to implement your own logic)
-  return !!localStorage.getItem('token');
+  return !!sessionStorage.getItem('token');
 };
 export const User = () => {
   const [user, setUser] = useState(null);
 
-  const token = localStorage.getItem('token');
-  const LocalUser = JSON.parse(localStorage.getItem('user'));
+  const token = sessionStorage.getItem('token');
+  const LocalUser = JSON.parse(sessionStorage.getItem('user'));
   const isNonMobileScreens = useMediaQuery('(min-width:1000px)');
 
   const getUser = async () => {
@@ -116,7 +117,7 @@ export const User = () => {
   }
 
   return (
-    <Box className='bg-[#f6f4eb]'>
+    <Box className='bg-gradient-to-b from-zinc-100 to-teal-50'>
       <Navbar />
       <Box
         width='100%'
@@ -137,7 +138,7 @@ export const User = () => {
           mt={isNonMobileScreens ? undefined : '2rem'}>
           <MyPostWidget picturePath={LocalUser.profilePicture} />
           <Box m='2rem 0' />
-          <UserWidgetSide userId={LocalUser._id} isProfile />
+          <PostsWidget userId={LocalUser._id} isProfile />
         </Box>
       </Box>
     </Box>

@@ -8,7 +8,7 @@ const ConsultantList = () => {
   const [consultants, setConsultants] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [consultantsPerPage] = useState(3); // Number of consultants per page
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
 
   const getConsultants = async () => {
     try {

@@ -103,7 +103,7 @@ export default function Register() {
   };
 
   return (
-    <section className='h-full bg-[#f6f4eb] '>
+    <section className='h-full bg-gradient-to-b from-zinc-100 to-teal-50'>
       <div className='container h-full p-10'>
         <div className='g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 '>
           <div className='w-full'>
@@ -159,7 +159,7 @@ export default function Register() {
                             placeholder='First Name'
                             name='firstName'
                             onChange={handleInputChange}
-                            className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black'
+                            className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-gradient-to-b from-zinc-100 to-teal-50 text-black'
                           />
                           <FaUser className='absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none' />
                         </div>
@@ -171,7 +171,7 @@ export default function Register() {
                             placeholder='Last Name'
                             name='lastName'
                             onChange={handleInputChange}
-                            className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black'
+                            className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-gradient-to-b from-zinc-100 to-teal-50 text-black'
                           />
                           <FaUser
                             icon='fa-thin fa-user'
@@ -187,7 +187,7 @@ export default function Register() {
                           placeholder='Email'
                           name='email'
                           onChange={handleInputChange}
-                          className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black'
+                          className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-gradient-to-b from-zinc-100 to-teal-50 text-black'
                         />
                         <FaEnvelope className='absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none' />
                       </div>
@@ -200,13 +200,13 @@ export default function Register() {
                           placeholder='Phone Number'
                           name='phone'
                           onChange={handleInputChange}
-                          className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black'
+                          className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-gradient-to-b from-zinc-100 to-teal-50 text-black'
                         />
                         <FaPhone className='absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none' />
                       </div>
                       {/* Image Upload input */}
                       <div className='relative'>
-                        <div className='flex justify-center w-full h-10 mb-4 px-4 transition bg-[#f6f4eb] border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none'>
+                        <div className='flex justify-center w-full h-10 mb-4 px-4 transition bg-gradient-to-b from-zinc-100 to-teal-50 border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none'>
                           <input
                             class=' w-full text-sm  p-2 text-gray-900 border-none  rounded-lg cursor-pointer bg-transparent focus:outline-none '
                             aria-describedby='file_input_help'
@@ -228,7 +228,7 @@ export default function Register() {
                           placeholder='Address'
                           name='address'
                           onChange={handleInputChange}
-                          className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black'
+                          className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-gradient-to-b from-zinc-100 to-teal-50 text-black'
                         />
                         <FaLocationArrow className='absolute right-3 top-1/2 transform -translate-y-3.5 focus:outline-none' />
                       </div>
@@ -240,7 +240,7 @@ export default function Register() {
                           placeholder='Password'
                           name='password'
                           onChange={handleInputChange}
-                          className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-[#f6f4eb] text-black'
+                          className='border-none p-3 w-full mb-4 shadow-md rounded-md bg-gradient-to-b from-zinc-100 to-teal-50 text-black'
                         />
                         <button
                           type='button'

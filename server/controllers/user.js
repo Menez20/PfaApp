@@ -42,7 +42,7 @@ export const getUsersByRole = async (req, res) => {
     });
 
     res.status(200).json(formatedUsers);
-    console.log('users', formatedUsers);
+    // console.log('users', formatedUsers);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

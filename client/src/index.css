@@ -5,7 +5,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost&family=Poppins&display=swap');
 
 body {
-  background-color: #f6f4eb;
+  background: rgb(244, 244, 245);
+  background: linear-gradient(
+    169deg,
+    rgba(244, 244, 245, 1) 16%,
+    rgba(240, 253, 250, 1) 100%
+  );
   font-family: 'Jost', sans-serif;
   font-family: 'Poppins', sans-serif;
 }

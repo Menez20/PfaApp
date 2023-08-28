@@ -16,8 +16,8 @@ import twitter from '../../assets/twitter.png';
 const UserWidgetSide = ({ userId, picturePath }) => {
   // const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
-  const user = JSON.parse(localStorage.getItem('user'));
+  const token = sessionStorage.getItem('token');
+  const user = JSON.parse(sessionStorage.getItem('user'));
 
   // const getUser = async () => {
   //   const response = await fetch(`http://localhost:3001/users/${userId}`, {
@@ -45,6 +45,7 @@ const UserWidgetSide = ({ userId, picturePath }) => {
       <FlexBetween
         gap='0.5rem'
         pb='1.1rem'
+        
         // onClick={() => navigate(`/profile/${userId}`)}
       >
         <FlexBetween gap='1rem'>

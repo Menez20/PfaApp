@@ -46,7 +46,7 @@ export const createPost = async (req, res) => {
  */
 export const getFeed = async (req, res) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find().sort({ createdAt: -1 });
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -76,7 +76,10 @@ export const getPost = async (req, res) => {
  */
 export const getPostsByUser = async (req, res) => {
   try {
-    const posts = await Post.find({ userId: req.params.userId });
+    const posts = await Post.find({ userId: req.params.userId }).sort({
+      createdAt: -1,
+    }); // Sort posts by timestamp in descending order
+
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ error: error.message });

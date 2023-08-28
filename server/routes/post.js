@@ -14,7 +14,7 @@ import { verifyToken } from '../middleware/auth.js';
 const router = express.Router();
 
 // read
-router.get('/', verifyToken, getFeed);
+router.get('/feed', verifyToken, getFeed);
 router.get('/:id', verifyToken, getPost);
 router.get('/user/:userId', verifyToken, getPostsByUser);
 router.get('/:id/comments', verifyToken, getPostComments);

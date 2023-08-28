@@ -4,7 +4,6 @@ import {
   AttachFileOutlined,
   GifBoxOutlined,
   ImageOutlined,
-  MicOutlined,
   MoreHorizOutlined,
 } from '@mui/icons-material';
 import {
@@ -13,16 +12,15 @@ import {
   Typography,
   InputBase,
   useTheme,
-  Button,
   IconButton,
   useMediaQuery,
   Select,
   MenuItem,
 } from '@mui/material';
-import FlexBetween from '../widget/FlexBetween';
+import FlexBetween from '../../widget/FlexBetween';
 import Dropzone from 'react-dropzone';
-import UserImage from '../widget/UserImage';
-import WidgetWrapper from '../widget/WidgetWrapper';
+import UserImage from '../../widget/UserImage';
+import WidgetWrapper from '../../widget/WidgetWrapper';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -36,11 +34,12 @@ const MyPostWidget = ({ picturePath }) => {
   const [clip, setClip] = useState(null);
   const [Attachement, setAttachment] = useState(null);
   const [post, setPost] = useState('');
+  const [posts, setPosts] = useState([]);
   const [postValue, setPostValue] = useState('');
   const { palette } = useTheme();
   const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
-  const token = localStorage.getItem('token');
-  const _id = JSON.parse(localStorage.getItem('user'))._id;
+  const token = sessionStorage.getItem('token');
+  const _id = JSON.parse(sessionStorage.getItem('user'))._id;
   const options = [
     { label: 'Housing Law', value: 'housing-law' },
     { label: 'Criminal Law', value: 'criminal-law' },
@@ -60,6 +59,7 @@ const MyPostWidget = ({ picturePath }) => {
       label: 'Help from Lawyers and Paralegals',
       value: 'help-lawyers-paralegals',
     },
+    { label: 'Other', value: 'other' },
   ];
 
   const handlePost = async (event) => {
@@ -94,6 +94,9 @@ const MyPostWidget = ({ picturePath }) => {
           setIsImage(false);
           setIsClip(false);
           setIsAttachment(false);
+          setTimeout(() => {
+            window.location.reload(false);
+          }, 2000);
         })
         .catch((error) => {
           toast.error('Error Posting:', error);
@@ -346,7 +349,7 @@ const MyPostWidget = ({ picturePath }) => {
         <button
           // disabled={!post || !postValue}
           className={
-            'bg-black text-sm text-white px-4 p-1 rounded-full hover:bg-gray-500 hover:cursor-pointer focus:outline-none'
+            'bg-black text-sm text-white px-4 p-1 rounded-full hover:bg-gray-500 hover:cursor-pointer focus:outline-none '
           }
           onClick={handlePost}>
           POST
