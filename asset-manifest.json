@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/PfaApp/static/css/main.0ff9c7f2.css",
-    "main.js": "/PfaApp/static/js/main.71cdd9c9.js",
+    "main.js": "/PfaApp/static/js/main.027ae0f1.js",
     "static/media/registerpic2.jpg": "/PfaApp/static/media/registerpic2.b960031ce3ec6cd70645.jpg",
     "static/media/loginpicture.jpg": "/PfaApp/static/media/loginpicture.0c577af2d2de9ac04067.jpg",
     "static/media/google-play.png": "/PfaApp/static/media/google-play.879703452f6fdd826063.png",
     "static/media/app-store.png": "/PfaApp/static/media/app-store.6b7164996d32c63623b2.png",
     "index.html": "/PfaApp/index.html",
     "main.0ff9c7f2.css.map": "/PfaApp/static/css/main.0ff9c7f2.css.map",
-    "main.71cdd9c9.js.map": "/PfaApp/static/js/main.71cdd9c9.js.map"
+    "main.027ae0f1.js.map": "/PfaApp/static/js/main.027ae0f1.js.map"
   },
   "entrypoints": [
     "static/css/main.0ff9c7f2.css",
-    "static/js/main.71cdd9c9.js"
+    "static/js/main.027ae0f1.js"
   ]
 }
