@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/pfaapp/static/css/main.0ff9c7f2.css",
-    "main.js": "/pfaapp/static/js/main.43b0543d.js",
-    "static/media/registerpic2.jpg": "/pfaapp/static/media/registerpic2.b960031ce3ec6cd70645.jpg",
-    "static/media/loginpicture.jpg": "/pfaapp/static/media/loginpicture.0c577af2d2de9ac04067.jpg",
-    "static/media/google-play.png": "/pfaapp/static/media/google-play.879703452f6fdd826063.png",
-    "static/media/app-store.png": "/pfaapp/static/media/app-store.6b7164996d32c63623b2.png",
-    "index.html": "/pfaapp/index.html",
-    "main.0ff9c7f2.css.map": "/pfaapp/static/css/main.0ff9c7f2.css.map",
-    "main.43b0543d.js.map": "/pfaapp/static/js/main.43b0543d.js.map"
+    "main.css": "/client/static/css/main.0ff9c7f2.css",
+    "main.js": "/client/static/js/main.a9a68e85.js",
+    "static/media/registerpic2.jpg": "/client/static/media/registerpic2.b960031ce3ec6cd70645.jpg",
+    "static/media/loginpicture.jpg": "/client/static/media/loginpicture.0c577af2d2de9ac04067.jpg",
+    "static/media/google-play.png": "/client/static/media/google-play.879703452f6fdd826063.png",
+    "static/media/app-store.png": "/client/static/media/app-store.6b7164996d32c63623b2.png",
+    "index.html": "/client/index.html",
+    "main.0ff9c7f2.css.map": "/client/static/css/main.0ff9c7f2.css.map",
+    "main.a9a68e85.js.map": "/client/static/js/main.a9a68e85.js.map"
   },
   "entrypoints": [
     "static/css/main.0ff9c7f2.css",
-    "static/js/main.43b0543d.js"
+    "static/js/main.a9a68e85.js"
   ]
 }
