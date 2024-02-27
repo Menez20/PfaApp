@@ -1,25 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import PostWidget from './PostWidget';
+import PostWidget from "./PostWidget";
 
 const PostsWidget = ({ userId, isProfile = false }) => {
   const [posts, setPosts] = useState([]); // Change this to an array
-  const token = sessionStorage.getItem('token');
+  const token = sessionStorage.getItem("token");
   const [commentAdded, setCommentAdded] = useState(false);
-
-  const getUserPosts = async () => {
-    const response = await fetch(`http://localhost:3001/posts/user/${userId}`, {
-      method: 'GET',
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const data = await response.json();
-
-    setPosts(data); // Set the array of posts directly
-  };
 
   const getPosts = async () => {
     const response = await fetch(`http://localhost:3001/posts/feed`, {
-      method: 'GET',
+      method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await response.json();
@@ -27,20 +17,10 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     setPosts(data); // Set the array of posts directly
   };
 
-  useEffect(
-    () => {
-      // if (isProfile) {
-      //   getUserPosts();
-      // } else {
-      getPosts();
-    },
-    // }
-    []
-  );
-  console.log('getUserPosts', posts);
-  console.log('getFeed', posts);
+  useEffect(() => {
+    getPosts();
+  }, []);
 
-  
   const handleCommentAdded = (postId, updatedComments) => {
     // Find the post in the posts array and update its comments
     const updatedPosts = posts.map((post) =>
