@@ -4,7 +4,7 @@
 
 <h4 align="center">This is a simple blogging website that allows users to read and write articles about their legal problems, and allow consultants to give them advice. It includes a chat system for the users to communicate with the lawyers. The website is built using the MERN stack (MongoDB, Express, React, Node.js).</h4>
 
-<div align="center"><img height="500px" src="https://github.com/Menez20/PfaApp/assets/77332141/94b6ce7a-3cfb-45e0-91cc-aff28cf8c798" /></div>
+<div align="center"><img src="https://github.com/Menez20/PfaApp/assets/77332141/94b6ce7a-3cfb-45e0-91cc-aff28cf8c798" /></div>
 
 
 ## Table of Contents
